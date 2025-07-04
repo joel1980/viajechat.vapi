@@ -1,49 +1,7 @@
+<vapi-widget assistant-id="8f3db38e-d181-498e-9e75-b7436d59a383" public-key="1b55ad80-a67a-4740-a25d-bbde6fcf5ffb"></vapi-widget>
 
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Comando de Voz ViajeChat</title>
-    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web"></script>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
-      }
-      button {
-        font-size: 20px;
-        padding: 15px 30px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #45a049;
-      }
-    </style>
-  </head>
-  <body>
-    <button onclick="startAgent()">🎙️ Hablar con ViajeChat</button>
-
-    <script>
-      const vapi = new Vapi({
-        apiKey: '1b55ad80-a67a-4740-a25d-bbde6fcf5ffb'
-      });
-
-      function startAgent() {
-        vapi.start('8f3db38e-d181-498e-9e75-b7436d59a383');
-      }
-
-      vapi.on('transcript', (data) => {
-        console.log('Texto detectado:', data.transcript);
-        // Aquí podés hacer algo con el texto, como enviarlo a un backend o almacenarlo
-      });
-    </script>
-  </body>
-</html>
+<script
+  src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+  async
+  type="text/javascript"
+></script>
