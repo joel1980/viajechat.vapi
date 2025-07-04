@@ -1,7 +1,81 @@
-<vapi-widget assistant-id="8f3db38e-d181-498e-9e75-b7436d59a383" public-key="1b55ad80-a67a-4740-a25d-bbde6fcf5ffb"></vapi-widget>
 
-<script
-  src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
-  async
-  type="text/javascript"
-></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hablar con IA - ViajeChat</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .voice-panel {
+      background: #1a1a1a;
+      color: white;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .custom-button {
+      background-color: #14B8A6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="voice-panel">
+    <h2>¿Querés hablar con la IA?</h2>
+    <button id="start-voice" class="custom-button">🎤 Iniciar conversación</button>
+    <vapi-widget
+      id="vapi-embed"
+      mode="voice"
+      theme="dark"
+      base-color="#000000"
+      accent-color="#14B8A6"
+      button-base-color="#000000"
+      button-accent-color="#ffffff"
+      radius="large"
+      size="full"
+      position="embedded"
+      main-label="TALK WITH AI"
+      start-button-text="Start"
+      end-button-text="End Call"
+      require-consent="true"
+      local-storage-key="vapi_widget_consent"
+      show-transcript="true"
+      public-key="1b55ad80-a67a-4740-a25d-bbde6fcf5ffb"
+      assistant-id="8f3db38e-d181-498e-9e75-b7436d59a383">
+    </vapi-widget>
+  </div>
+
+  <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+  <script>
+    document.getElementById('start-voice').addEventListener('click', function () {
+      const interval = setInterval(() => {
+        const button = document.querySelector('vapi-widget').shadowRoot?.querySelector('button');
+        if (button) {
+          button.click();
+          clearInterval(interval);
+        }
+      }, 500);
+    });
+  </script>
+</body>
+</html>
